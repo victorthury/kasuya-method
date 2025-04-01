@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Despejos de Café - Proporção 1:15</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="container mt-5">
+      <div class="card p-4 shadow-lg">
+        <h2 class="text-center mb-4">
+          ☕ Método Kasuya, calculo de despejos - Proporção 1:15
+        </h2>
+
+        <!-- Formulário -->
+        <form id="formReceita">
+          <div class="mb-3">
+            <label for="saborSelect" class="form-label">Escolha o Sabor:</label>
+            <select id="saborSelect" class="form-select">
+              <option value="doce">Doce</option>
+              <option value="equilibrado" selected>Equilibrado</option>
+              <option value="acido">Ácido</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="intensidadeSelect" class="form-label"
+              >Escolha a Intensidade:</label
+            >
+            <select id="intensidadeSelect" class="form-select">
+              <option value="leve">Leve</option>
+              <option value="medio">Médio</option>
+              <option value="intenso" selected>Intenso</option>
+            </select>
+          </div>
+
+          <!-- Campo para definir a quantidade de café -->
+          <div class="mb-3">
+            <label for="cafeInput" class="form-label"
+              >Quantidade de Café (g):</label
+            >
+            <input
+              type="number"
+              id="cafeInput"
+              class="form-control"
+              value="10"
+              min="10"
+              max="50"
+            />
+          </div>
+
+          <!-- Opção para escolher entre normal e acumulativo -->
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="modoAcumulativo"
+              checked
+            />
+            <label class="form-check-label" for="modoAcumulativo"
+              >Modo Acumulativo</label
+            >
+          </div>
+
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="gerarTabela()"
+            >
+              Gerar Receita
+            </button>
+          </div>
+        </form>
+
+        <!-- Tabela de Resultados -->
+        <div id="resultado" class="mt-4" style="display: none">
+          <h4 class="text-center">Tabela de Despejos</h4>
+          <table class="table table-bordered mt-3">
+            <thead class="table-dark">
+              <tr>
+                <th>Despejo</th>
+                <th>Volume (ml)</th>
+                <th>Tempo</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaResult"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap e JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
