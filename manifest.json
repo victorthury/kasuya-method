@@ -1,0 +1,21 @@
+{
+  "name": "Calculadora de Café",
+  "short_name": "Café PWA",
+  "description": "Ajuda a calcular os despejos de café",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#4B3869",
+  "theme_color": "#4B3869",
+  "icons": [
+    {
+      "src": "./img/v60-192px.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/v60-512px.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
