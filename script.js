@@ -64,7 +64,7 @@ function gerarTabela() {
   const sabor = document.getElementById("saborSelect").value;
   const intensidade = document.getElementById("intensidadeSelect").value;
   const acumulativo = document.getElementById("modoAcumulativo").checked;
-  const gramasCafe = parseInt(document.getElementById("cafeInput").value);
+  const gramasCafe = parseInt(document.getElementById("cafeSelect").value);
 
   const fator = gramasCafe / 10; // Ajuste proporcional
   let volumes = getVolume(sabor, intensidade, fator, acumulativo);

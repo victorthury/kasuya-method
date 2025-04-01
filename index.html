@@ -40,17 +40,14 @@
 
           <!-- Campo para definir a quantidade de café -->
           <div class="mb-3">
-            <label for="cafeInput" class="form-label"
-              >Quantidade de Café (g):</label
-            >
-            <input
-              type="number"
-              id="cafeInput"
-              class="form-control"
-              value="10"
-              min="10"
-              max="50"
-            />
+            <label for="cafeSelect">Quantidade de Café:</label>
+            <select id="cafeSelect" class="form-select">
+              <option value="10">10g (1 xícara)</option>
+              <option value="20">20g (2 xícaras)</option>
+              <option value="30">30g (3 xícaras)</option>
+              <option value="40">40g (4 xícaras)</option>
+              <option value="50">50g (5 xícaras)</option>
+            </select>
           </div>
 
           <!-- Opção para escolher entre normal e acumulativo -->
