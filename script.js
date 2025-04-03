@@ -87,17 +87,23 @@ if ("serviceWorker" in navigator) {
 
 function copyPix() {
   const pixKey = "264393e5-f987-4894-8e6d-3304aa85ba41"; // Altere para sua chave real
-  navigator.clipboard.writeText(pixKey).then(() => {
-    const icon = document.getElementById("copyIcon");
+  navigator.clipboard
+    .writeText(pixKey)
+    .then(() => {
+      const icon = document.getElementById("copyIcon");
 
-    // Muda o ícone para um check e cor verde
-    icon.innerText = "check";
-    icon.style.color = "green";
+      // Muda o ícone para um check e cor verde
+      icon.innerText = "check";
+      icon.style.color = "green";
 
-    // Volta ao normal após 1.5 segundos
-    setTimeout(() => {
-      icon.innerText = "content_copy";
-      icon.style.color = "black";
-    }, 1500);
-  });
+      // Volta ao normal após 1.5 segundos
+      setTimeout(() => {
+        icon.innerText = "content_copy";
+        icon.style.color = "black";
+      }, 1500);
+
+      const toast = new bootstrap.Toast(document.getElementById("pixToast"));
+      toast.show();
+    })
+    .catch((err) => console.error("Erro ao copiar Pix:", err));
 }
