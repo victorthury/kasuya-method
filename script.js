@@ -60,6 +60,10 @@ function montarTabela(volumes, momentos) {
   document.getElementById("resultado").style.display = "block";
 }
 
+function mostrarPix() {
+  document.getElementById("pixMessage").style.display = "block";
+}
+
 function gerarTabela() {
   const sabor = document.getElementById("saborSelect").value;
   const intensidade = document.getElementById("intensidadeSelect").value;
@@ -71,6 +75,7 @@ function gerarTabela() {
   let momentos = getMomentos(volumes.length);
 
   montarTabela(volumes, momentos);
+  mostrarPix();
 }
 
 if ("serviceWorker" in navigator) {
@@ -78,4 +83,21 @@ if ("serviceWorker" in navigator) {
     .register("./sw.js")
     .then(() => console.log("Service Worker registrado!"))
     .catch((err) => console.error("Erro ao registrar Service Worker:", err));
+}
+
+function copyPix() {
+  const pixKey = "264393e5-f987-4894-8e6d-3304aa85ba41"; // Altere para sua chave real
+  navigator.clipboard.writeText(pixKey).then(() => {
+    const icon = document.getElementById("copyIcon");
+
+    // Muda o ícone para um check e cor verde
+    icon.innerText = "check";
+    icon.style.color = "green";
+
+    // Volta ao normal após 1.5 segundos
+    setTimeout(() => {
+      icon.innerText = "content_copy";
+      icon.style.color = "black";
+    }, 1500);
+  });
 }

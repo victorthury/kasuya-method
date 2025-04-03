@@ -22,12 +22,17 @@
       sizes="48x48"
       href="./img/favicon-48x48.png"
     />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-light">
     <div class="container mt-5">
       <div class="card p-4 shadow-lg">
         <h2 class="text-center mb-4">
-          ☕ Método Kasuya, calculo de despejos - Proporção 1:15
+          ☕ Método Kasuya, cálculo de despejos - Proporção 1:15
         </h2>
 
         <!-- Formulário -->
@@ -100,6 +105,39 @@
             </thead>
             <tbody id="tabelaResult"></tbody>
           </table>
+        </div>
+
+        <!-- 📌 Mensagem Pix -->
+        <div id="pixMessage" class="text-center mt-4" style="display: none">
+          <p>
+            Se essa receita ajudou no preparo do seu café, considere doar pro
+            nosso Pix e ajudar a pagar um café <span>👉</span>
+            <span
+              id="copyIcon"
+              class="material-icons ms-2"
+              style="cursor: pointer; font-size: 1.5rem"
+              onclick="copyPix()"
+              title="Copiar chave Pix"
+            >
+              content_copy
+            </span>
+          </p>
+        </div>
+
+        <!-- 📌 Toast de Sucesso -->
+        <div
+          id="pixToast"
+          class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3"
+          role="alert"
+        >
+          <div class="d-flex">
+            <div class="toast-body">✅ Chave Pix copiada com sucesso!</div>
+            <button
+              type="button"
+              class="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast"
+            ></button>
+          </div>
         </div>
       </div>
     </div>
