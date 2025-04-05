@@ -26,3 +26,7 @@ h2 {
   background-color: #3d2c8d !important;
   color: white;
 }
+
+#displayCronometro {
+  font-family: "Roboto Mono", monospace;
+}

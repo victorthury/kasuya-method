@@ -27,6 +27,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-light">
     <div class="container mt-5">
@@ -106,6 +110,34 @@
             <tbody id="tabelaResult"></tbody>
           </table>
         </div>
+
+        <!-- Cronômetro -->
+        <div
+          id="cronometroContainer"
+          class="text-center mt-4"
+          style="display: none"
+        >
+          <h4 class="mb-3">⏱️ Cronômetro</h4>
+          <div class="text-center mt-4">
+            <div class="fs-3 mb-3" id="displayCronometro">00:00:000</div>
+            <div class="d-flex justify-content-center gap-3">
+              <button class="btn btn-success" onclick="iniciarCronometro()">
+                Iniciar
+              </button>
+              <button
+                class="btn btn-warning text-white"
+                onclick="pausarCronometro()"
+              >
+                Pausar
+              </button>
+              <button class="btn btn-danger" onclick="reiniciarCronometro()">
+                Reiniciar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr id="separadorPix" class="my-4" style="display: none" />
 
         <!-- 📌 Mensagem Pix -->
         <div id="pixMessage" class="text-center mt-4" style="display: none">

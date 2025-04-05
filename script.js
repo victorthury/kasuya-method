@@ -61,7 +61,12 @@ function montarTabela(volumes, momentos) {
 }
 
 function mostrarPix() {
+  document.getElementById("separadorPix").style.display = "block";
   document.getElementById("pixMessage").style.display = "block";
+}
+
+function mostrarCronometro() {
+  document.getElementById("cronometroContainer").style.display = "block";
 }
 
 function gerarTabela() {
@@ -76,6 +81,7 @@ function gerarTabela() {
 
   montarTabela(volumes, momentos);
   mostrarPix();
+  mostrarCronometro();
 }
 
 if ("serviceWorker" in navigator) {
@@ -106,4 +112,48 @@ function copyPix() {
       toast.show();
     })
     .catch((err) => console.error("Erro ao copiar Pix:", err));
+}
+
+let tempoInicio = null;
+let intervaloCronometro = null;
+let tempoPausado = 0;
+
+function formatarTempoMs(ms) {
+  const totalSegundos = Math.floor(ms / 1000);
+  const minutos = Math.floor(totalSegundos / 60)
+    .toString()
+    .padStart(2, "0");
+  const segundos = (totalSegundos % 60).toString().padStart(2, "0");
+  const milissegundos = (ms % 1000).toString().padStart(3, "0");
+  return `${minutos}:${segundos}:${milissegundos}`;
+}
+
+function atualizarDisplay() {
+  const agora = Date.now();
+  const tempoDecorrido = agora - tempoInicio + tempoPausado;
+  document.getElementById("displayCronometro").innerText =
+    formatarTempoMs(tempoDecorrido);
+}
+
+function iniciarCronometro() {
+  if (!intervaloCronometro) {
+    tempoInicio = Date.now();
+    intervaloCronometro = setInterval(atualizarDisplay, 50);
+  }
+}
+
+function pausarCronometro() {
+  if (intervaloCronometro) {
+    clearInterval(intervaloCronometro);
+    intervaloCronometro = null;
+    tempoPausado += Date.now() - tempoInicio;
+  }
+}
+
+function reiniciarCronometro() {
+  clearInterval(intervaloCronometro);
+  intervaloCronometro = null;
+  tempoInicio = null;
+  tempoPausado = 0;
+  document.getElementById("displayCronometro").innerText = "00:00:000";
 }
