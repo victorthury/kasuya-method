@@ -1,6 +1,6 @@
 {
   "name": "Calculadora de Café",
-  "short_name": "Café PWA",
+  "short_name": "Café",
   "description": "Ajuda a calcular os despejos de café",
   "start_url": "./index.html",
   "display": "standalone",
