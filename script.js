@@ -1,7 +1,9 @@
 function getVolumeEtapa1(sabor) {
+  if (sabor === "mais-doce") return [20, 40]; // Base para 10g
   if (sabor === "doce") return [25, 35]; // Base para 10g
   if (sabor === "equilibrado") return [30, 30]; // Base para 10g
   if (sabor === "acido") return [35, 25]; // Base para 10g
+  if (sabor === "mais-acido") return [40, 20]; // Base para 10g
   return [];
 }
 
