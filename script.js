@@ -8,6 +8,7 @@ function getVolumeEtapa1(sabor) {
 }
 
 function getVolumeEtapa2(intensidade) {
+  if (intensidade === "muito-intenso") return [22.5, 22.5, 22.5, 22.5]; // Base para 10g
   if (intensidade === "intenso") return [30, 30, 30]; // Base para 10g
   if (intensidade === "medio") return [45, 45]; // Base para 10g
   if (intensidade === "leve") return [90]; // Base para 10g
