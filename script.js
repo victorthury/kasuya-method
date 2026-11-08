@@ -8,7 +8,6 @@ function getVolumeEtapa1(sabor) {
 }
 
 function getVolumeEtapa2(intensidade) {
-  if (intensidade === "muito-intenso") return [22.5, 22.5, 22.5, 22.5]; // Base para 10g
   if (intensidade === "intenso") return [30, 30, 30]; // Base para 10g
   if (intensidade === "medio") return [45, 45]; // Base para 10g
   if (intensidade === "leve") return [90]; // Base para 10g
@@ -53,19 +52,22 @@ function montarTabela(volumes, momentos) {
   for (let i = 0; i < despejos; i++) {
     tabelaResult.innerHTML += `
             <tr>
-                <td>${i + 1}º Despejo</td>
-                <td>${volumes[i]}ml</td>
-                <td>${momentos[i]}</td>
+                <td><span class="numero">${i + 1}</span> Despejo</td>
+                <td><span class="tag is-light is-medium">${volumes[i]} ml</span></td>
+                <td class="tempo">${momentos[i]}</td>
             </tr>
         `;
   }
 
-  document.getElementById("resultado").style.display = "block";
-}
+  tabelaResult.innerHTML += `
+            <tr class="linha-fim">
+                <td>🏁 Fim</td>
+                <td>—</td>
+                <td class="tempo">3:30</td>
+            </tr>
+        `;
 
-function mostrarPix() {
-  document.getElementById("separadorPix").style.display = "block";
-  document.getElementById("pixMessage").style.display = "block";
+  document.getElementById("resultado").style.display = "block";
 }
 
 function mostrarCronometro() {
@@ -83,7 +85,6 @@ function gerarTabela() {
   let momentos = getMomentos(volumes.length);
 
   montarTabela(volumes, momentos);
-  mostrarPix();
   mostrarCronometro();
 }
 
@@ -92,29 +93,6 @@ if ("serviceWorker" in navigator) {
     .register("./sw.js")
     .then(() => console.log("Service Worker registrado!"))
     .catch((err) => console.error("Erro ao registrar Service Worker:", err));
-}
-
-function copyPix() {
-  const pixKey = "264393e5-f987-4894-8e6d-3304aa85ba41"; // Altere para sua chave real
-  navigator.clipboard
-    .writeText(pixKey)
-    .then(() => {
-      const icon = document.getElementById("copyIcon");
-
-      // Muda o ícone para um check e cor verde
-      icon.innerText = "check";
-      icon.style.color = "green";
-
-      // Volta ao normal após 1.5 segundos
-      setTimeout(() => {
-        icon.innerText = "content_copy";
-        icon.style.color = "black";
-      }, 1500);
-
-      const toast = new bootstrap.Toast(document.getElementById("pixToast"));
-      toast.show();
-    })
-    .catch((err) => console.error("Erro ao copiar Pix:", err));
 }
 
 let tempoInicio = null;

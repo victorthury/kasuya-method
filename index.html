@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Despejos de Café - Proporção 1:15</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -32,66 +32,59 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-light">
-    <div class="container mt-5">
-      <div class="card p-4 shadow-lg">
-        <h2 class="text-center mb-4">
+  <body>
+    <div class="container mt-5 px-3">
+      <div class="card">
+       <div class="card-content">
+        <h2 class="title is-4 has-text-centered mb-5">
           ☕ Método Kasuya, cálculo de despejos - Proporção 1:15
         </h2>
 
         <!-- Formulário -->
         <form id="formReceita">
-          <div class="mb-3">
-            <label for="saborSelect" class="form-label">Escolha o Sabor:</label>
-            <select id="saborSelect" class="form-select">
+          <div class="field">
+<label class="label" for="saborSelect">Escolha o Sabor:</label>
+<div class="control"><div class="select is-fullwidth"><select id="saborSelect">
               <option value="mais-doce">Mais Doce</option>
               <option value="doce">Doce</option>
               <option value="equilibrado" selected>Equilibrado</option>
               <option value="acido">Ácido</option>
               <option value="mais-acido">Mais Ácido</option>
-            </select>
+            </select></div></div>
           </div>
-          <div class="mb-3">
-            <label for="intensidadeSelect" class="form-label"
-              >Escolha a Intensidade:</label
-            >
-            <select id="intensidadeSelect" class="form-select">
+          <div class="field">
+<label class="label" for="intensidadeSelect">Escolha a Intensidade:</label>
+<div class="control"><div class="select is-fullwidth"><select id="intensidadeSelect">
               <option value="leve">Leve</option>
               <option value="medio">Médio</option>
               <option value="intenso" selected>Intenso</option>
-              <option value="muito-intenso">Muito Intenso</option>
-            </select>
+            </select></div></div>
           </div>
 
           <!-- Campo para definir a quantidade de café -->
-          <div class="mb-3">
-            <label for="cafeSelect">Quantidade de Café:</label>
-            <select id="cafeSelect" class="form-select">
+          <div class="field">
+<label class="label" for="cafeSelect">Quantidade de Café:</label>
+<div class="control"><div class="select is-fullwidth"><select id="cafeSelect">
               <option value="10">10g (1 xícara)</option>
               <option value="20" selected>20g (2 xícaras)</option>
               <option value="30">30g (3 xícaras)</option>
               <option value="40">40g (4 xícaras)</option>
               <option value="50">50g (5 xícaras)</option>
-            </select>
+            </select></div></div>
           </div>
 
           <!-- Opção para escolher entre normal e acumulativo -->
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="modoAcumulativo"
-              checked
-            />
-            <label class="form-check-label" for="modoAcumulativo"
-              >Modo Acumulativo</label
-            >
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" id="modoAcumulativo" checked />
+              Modo Acumulativo
+            </label>
           </div>
 
-          <div class="text-center">
+          <div class="has-text-centered">
             <button
               type="button"
-              class="btn btn-primary"
+              class="button is-primary is-fullwidth"
               onclick="gerarTabela()"
             >
               Gerar Receita
@@ -101,9 +94,9 @@
 
         <!-- Tabela de Resultados -->
         <div id="resultado" class="mt-4" style="display: none">
-          <h4 class="text-center">Tabela de Despejos</h4>
-          <table class="table table-bordered mt-3">
-            <thead class="table-dark">
+          <h4 class="title is-5 has-text-centered">Tabela de Despejos</h4>
+          <table class="table is-fullwidth is-striped is-hoverable has-text-centered mt-3 tabela-despejos">
+            <thead>
               <tr>
                 <th>Despejo</th>
                 <th>Volume (ml)</th>
@@ -117,68 +110,81 @@
         <!-- Cronômetro -->
         <div
           id="cronometroContainer"
-          class="text-center mt-4"
+          class="has-text-centered mt-4"
           style="display: none"
         >
-          <h4 class="mb-3">⏱️ Cronômetro</h4>
-          <div class="text-center mt-4">
-            <div class="fs-3 mb-3" id="displayCronometro">00:00:000</div>
-            <div class="d-flex justify-content-center gap-3">
-              <button class="btn btn-success" onclick="iniciarCronometro()">
+          <h4 class="title is-5 mb-3">⏱️ Cronômetro</h4>
+          <div class="has-text-centered mt-4">
+            <div class="is-size-3 mb-3" id="displayCronometro">00:00:000</div>
+            <div class="buttons is-centered">
+              <button class="button is-success" onclick="iniciarCronometro()">
                 Iniciar
               </button>
               <button
-                class="btn btn-warning text-white"
+                class="button is-warning"
                 onclick="pausarCronometro()"
               >
                 Pausar
               </button>
-              <button class="btn btn-danger" onclick="reiniciarCronometro()">
+              <button class="button is-danger" onclick="reiniciarCronometro()">
                 Reiniciar
               </button>
             </div>
           </div>
         </div>
 
-        <hr id="separadorPix" class="my-4" style="display: none" />
+        <hr class="my-5" />
 
-        <!-- 📌 Mensagem Pix -->
-        <div id="pixMessage" class="text-center mt-4" style="display: none">
+        <!-- Explicação do método -->
+        <section class="content" id="explicacaoMetodo">
+          <h4 class="title is-5 has-text-centered">📖 Como funciona o método 4:6</h4>
           <p>
-            Se essa receita ajudou no preparo do seu café, considere doar pro
-            nosso Pix e ajudar a pagar um café <span>👉</span>
-            <span
-              id="copyIcon"
-              class="material-icons ms-2"
-              style="cursor: pointer; font-size: 1.5rem"
-              onclick="copyPix()"
-              title="Copiar chave Pix"
-            >
-              content_copy
-            </span>
+            Criado por <strong>Tetsu Kasuya</strong>, campeão mundial de Brewers
+            Cup em 2016, o método 4:6 divide a água total em duas partes: 40%
+            para definir o <strong>sabor</strong> e 60% para definir a
+            <strong>intensidade</strong>. Aqui usamos a proporção de 1:15 (15 ml
+            de água para cada 1 g de café).
           </p>
-        </div>
-
-        <!-- 📌 Toast de Sucesso -->
-        <div
-          id="pixToast"
-          class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3"
-          role="alert"
-        >
-          <div class="d-flex">
-            <div class="toast-body">✅ Chave Pix copiada com sucesso!</div>
-            <button
-              type="button"
-              class="btn-close btn-close-white me-2 m-auto"
-              data-bs-dismiss="toast"
-            ></button>
-          </div>
-        </div>
+          <h5>1. Os dois primeiros despejos (40%): doçura ou acidez</h5>
+          <ul>
+            <li>
+              <strong>Mais doce:</strong> o primeiro despejo é menor e o segundo
+              é maior.
+            </li>
+            <li>
+              <strong>Equilibrado:</strong> os dois despejos têm o mesmo volume.
+            </li>
+            <li>
+              <strong>Mais ácido:</strong> o primeiro despejo é maior e o
+              segundo é menor.
+            </li>
+          </ul>
+          <h5>2. Os despejos seguintes (60%): intensidade</h5>
+          <p>
+            Os 60% restantes são divididos em partes iguais. Quanto mais
+            despejos, mais intenso fica o café:
+          </p>
+          <ul>
+            <li><strong>Leve:</strong> 3 despejos no total.</li>
+            <li><strong>Médio:</strong> 4 despejos no total.</li>
+            <li><strong>Intenso:</strong> 5 despejos no total.</li>
+          </ul>
+          <h5>Dicas</h5>
+          <ul>
+            <li>Moagem grossa e água a cerca de 92–93 °C.</li>
+            <li>
+              Os despejos acontecem a cada 45 segundos (30 segundos antes do
+              último), e o café deve estar pronto em torno de 3:30.
+            </li>
+            <li>
+              No <strong>modo acumulativo</strong>, o volume mostrado é o total
+              na balança; sem ele, é a quantidade de cada despejo.
+            </li>
+          </ul>
+        </section>
+       </div>
       </div>
     </div>
-
-    <!-- Bootstrap e JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
